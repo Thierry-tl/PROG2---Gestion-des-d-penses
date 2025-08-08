@@ -23,13 +23,21 @@ public class Expense {
         return date;
     }
 
+    public void setDate (LocalDate date){
+        this.date = date;
+    }
+
+    public void setLabem (String label){
+        this.label = label;
+    }
+    
 
     //Ajoute du methode IsrLargeExpense
     public boolean isLargeExpense() {
         return amount > 100.0;
     }
 
-    //ffichage du depense
+    //Affichage du depense
     @Override
     public String toString() {
         return "Expense: label= " + label + ", amount= " + amount + ", date= " + date;
