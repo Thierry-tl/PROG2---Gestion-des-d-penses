@@ -23,10 +23,13 @@ public class Expense {
         return date;
     }
 
+
+    //Ajoute du methode IsrLargeExpense
     public boolean isLargeExpense() {
         return amount > 100.0;
     }
 
+    //ffichage du depense
     @Override
     public String toString() {
         return "Expense: label= " + label + ", amount= " + amount + ", date= " + date;
