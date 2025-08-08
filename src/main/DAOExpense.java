@@ -8,6 +8,7 @@ public class ExpenseDAO {
         this.expenses = expenses;
     }
 
+    // Retourner uniquement les dépenses remboursables non remboursées.
     public List<RefundableExpense> getUnrefundedExpenses() {
         return expenses.stream()
                 .filter(exp -> exp instanceof RefundableExpense)
@@ -16,6 +17,7 @@ public class ExpenseDAO {
                 .collect(Collectors.toList());
     }
 
+    //Retourner le montant total de toutes les dépenses récurrentes.
     public double getTotalRecurringExpenses() {
         return expenses.stream()
                 .filter(exp -> exp instanceof RecurringExpense)
@@ -23,6 +25,7 @@ public class ExpenseDAO {
                 .sum();
     }
 
+    //Retourner une liste des libellés (label) des dépenses strictement supérieures à 100.
     public List<String> getLargeExpenseLabels() {
         return expenses.stream()
                 .filter(Expense::isLargeExpense)
@@ -30,6 +33,7 @@ public class ExpenseDAO {
                 .collect(Collectors.toList());
     }
 
+    // Retourner le montant total de toutes les dépenses (les remboursables, et les dépenses récurrentes, sans notion de durée ou de date).
     public double getTotalExpenses() {
         return expenses.stream()
                 .mapToDouble(Expense::getAmount)
